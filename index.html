@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are We Crashing Out?</title>
+    <style>
+        body, html {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000; color: #fff;
+            scroll-behavior: smooth; overflow-x: hidden;
+        }
+        .landing {
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+        }
+        h1 { font-size: 3.5rem; color: #ff0000; text-transform: uppercase; margin-bottom: 30px; }
+        .btn-container { display: flex; gap: 20px; }
+        .btn {
+            padding: 15px 40px; font-size: 1.2rem; cursor: pointer;
+            border: 2px solid #fff; background: none; color: #fff;
+            transition: 0.3s; text-transform: uppercase; font-weight: bold;
+        }
+        .btn-no:hover { background: #ff0000; border-color: #ff0000; box-shadow: 0 0 20px #ff0000; }
+        .btn-yes:hover { background: #fff; color: #000; }
+        
+        .store { min-height: 100vh; padding: 100px 20px; background: #111; }
+        .grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px; max-width: 1000px; margin: 50px auto;
+        }
+        .card {
+            background: #1a1a1a; padding: 30px; border: 1px solid #333;
+            text-align: center; border-radius: 8px;
+        }
+        .card:hover { border-color: #ff0000; }
+    </style>
+</head>
+<body>
+
+    <section class="landing">
+        <h1>Are we crashing out?</h1>
+        <div class="btn-container">
+            <button class="btn btn-yes" onclick="document.getElementById('store').scrollIntoView()">YES</button>
+            <button class="btn btn-no" onclick="location.href='https://www.youtube.com/watch?v=8Go6dHuylyM'">NO</button>
+        </div>
+    </section>
+
+    <section id="store" class="store">
+        <h2 style="text-align:center; font-size: 2.5rem;">THE CRASH STORE</h2>
+        <div class="grid">
+            <div class="card"><h3>Black Air Force Energy</h3><p>$99.00</p></div>
+            <div class="card"><h3>Dry Wall Patch Kit</h3><p>$15.00</p></div>
+            <div class="card"><h3>Exhausted Sighs (Digital)</h3><p>$0.00</p></div>
+        </div>
+    </section>
+
+</body>
+</html>
