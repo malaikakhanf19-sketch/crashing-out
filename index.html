@@ -3,56 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Are We Crashing Out?</title>
+    <title>Are We Crashing Out? ✨💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0; padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000; color: #fff;
+            background-color: #fff0f5; 
+            color: #555;
             scroll-behavior: smooth; overflow-x: hidden;
         }
+
+        /* Magical Rainbow Sparkle Background */
         .landing {
             height: 100vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 25%, #fbc2eb 50%, #a1c4fd 75%, #c2e9fb 100%);
+            position: relative;
         }
-        h1 { font-size: 3.5rem; color: #ff0000; text-transform: uppercase; margin-bottom: 30px; }
-        .btn-container { display: flex; gap: 20px; }
-        .btn {
-            padding: 15px 40px; font-size: 1.2rem; cursor: pointer;
-            border: 2px solid #fff; background: none; color: #fff;
-            transition: 0.3s; text-transform: uppercase; font-weight: bold;
+
+        /* Floating Sparkles/Emojis */
+        .sparkle { position: absolute; font-size: 2.5rem; animation: float 3s infinite ease-in-out; pointer-events: none; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(20deg); }
         }
-        .btn-no:hover { background: #ff0000; border-color: #ff0000; box-shadow: 0 0 20px #ff0000; }
-        .btn-yes:hover { background: #fff; color: #000; }
+
+        h1 { 
+            font-family: 'Sacramento', cursive; 
+            font-size: clamp(3rem, 10vw, 5.5rem); 
+            color: #fff; 
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 10px rgba(255, 105, 180, 0.5);
+        }
+
+        .btn-container { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; }
         
-        .store { min-height: 100vh; padding: 100px 20px; background: #111; }
+        .btn {
+            padding: 12px 45px; 
+            font-size: 1.8rem; 
+            cursor: pointer;
+            border: 3px solid #fff; 
+            background: rgba(255, 255, 255, 0.3); 
+            color: #fff;
+            border-radius: 100px; 
+            transition: 0.4s; 
+            font-family: 'Sacramento', cursive;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-yes:hover { background: #fff; color: #ff69b4; transform: scale(1.1); }
+        .btn-no:hover { 
+            background: #ffb6c1; 
+            border-color: #ffb6c1; 
+            color: #fff; 
+            box-shadow: 0 0 20px #fff; 
+            transform: scale(1.1); 
+        }
+
+        /* The Store Section */
+        .store { 
+            min-height: 100vh; 
+            padding: 80px 20px; 
+            background: #fff; 
+            background-image: radial-gradient(#ffe4e1 1px, transparent 1px);
+            background-size: 20px 20px; 
+        }
+
+        .store h2 { 
+            font-family: 'Sacramento', cursive; 
+            text-align: center; 
+            font-size: 4.5rem; 
+            color: #ff69b4; 
+            margin-bottom: 10px;
+        }
+
         .grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px; max-width: 1000px; margin: 50px auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; max-width: 1100px; margin: 40px auto;
         }
+
         .card {
-            background: #1a1a1a; padding: 30px; border: 1px solid #333;
-            text-align: center; border-radius: 8px;
+            background: #fff; 
+            padding: 40px; 
+            border: 2px dashed #ffb6c1;
+            text-align: center; 
+            border-radius: 25px;
+            transition: 0.3s;
         }
-        .card:hover { border-color: #ff0000; }
+
+        .card:hover { border-style: solid; border-color: #ff69b4; background: #fffafb; transform: translateY(-5px); }
+        
+        .card h3 { font-family: 'Sacramento', cursive; font-size: 2.8rem; color: #ff69b4; margin-bottom: 5px; }
+        .card p { color: #ffb6c1; font-weight: bold; font-size: 1.4rem; }
     </style>
 </head>
 <body>
 
     <section class="landing">
+        <div class="sparkle" style="top: 10%; left: 15%;">✨</div>
+        <div class="sparkle" style="top: 20%; right: 20%;">🌈</div>
+        <div class="sparkle" style="bottom: 25%; left: 10%;">💖</div>
+        <div class="sparkle" style="bottom: 15%; right: 15%;">🌸</div>
+
         <h1>Are we crashing out?</h1>
         <div class="btn-container">
-            <button class="btn btn-yes" onclick="document.getElementById('store').scrollIntoView()">YES</button>
-            <button class="btn btn-no" onclick="location.href='https://www.youtube.com/watch?v=8Go6dHuylyM'">NO</button>
+            <button class="btn btn-yes" onclick="document.getElementById('store').scrollIntoView()">Yes ✨</button>
+            <button class="btn btn-no" onclick="location.href='https://www.youtube.com/watch?v=8Go6dHuylyM'">No 🎀</button>
         </div>
     </section>
 
     <section id="store" class="store">
-        <h2 style="text-align:center; font-size: 2.5rem;">THE CRASH STORE</h2>
+        <h2>The Dreamy Boutique</h2>
         <div class="grid">
-            <div class="card"><h3>Black Air Force Energy</h3><p>$99.00</p></div>
-            <div class="card"><h3>Dry Wall Patch Kit</h3><p>$15.00</p></div>
-            <div class="card"><h3>Exhausted Sighs (Digital)</h3><p>$0.00</p></div>
+            <div class="card">
+                <h3>Sugar Cloud Hoodie</h3>
+                <p>$65.00</p>
+            </div>
+            <div class="card">
+                <h3>Sparkle Spray</h3>
+                <p>$12.00</p>
+            </div>
+            <div class="card">
+                <h3>Pink Air Forces</h3>
+                <p>$110.00</p>
+            </div>
         </div>
     </section>
 
