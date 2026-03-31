@@ -12,10 +12,9 @@
             background-color: #fff0f5; 
             color: #555;
             scroll-behavior: smooth; overflow-x: hidden;
-            height: 100%; /* Important for full-screen star effect */
         }
 
-        /* --- Landing Page Section --- */
+        /* --- Landing Page --- */
         .landing {
             height: 100vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
@@ -23,7 +22,6 @@
             position: relative;
         }
 
-        /* Floating Sparkles */
         .sparkle { position: absolute; font-size: 2.5rem; animation: float 3s infinite ease-in-out; pointer-events: none; }
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -34,159 +32,103 @@
             font-family: 'Sacramento', cursive; 
             font-size: clamp(3.5rem, 10vw, 6rem); 
             color: #fff; 
-            margin-bottom: 20px;
             text-shadow: 3px 3px 10px rgba(255, 105, 180, 0.5);
         }
 
         .btn-container { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; }
         
         .btn {
-            padding: 12px 45px; 
-            font-size: 1.8rem; 
-            cursor: pointer;
-            border: 3px solid #fff; 
-            background: rgba(255, 255, 255, 0.3); 
-            color: #fff;
-            border-radius: 100px; 
-            transition: 0.4s; 
-            font-family: 'Sacramento', cursive;
-            backdrop-filter: blur(5px);
+            padding: 12px 45px; font-size: 1.8rem; cursor: pointer;
+            border: 3px solid #fff; background: rgba(255, 255, 255, 0.3); 
+            color: #fff; border-radius: 100px; transition: 0.4s; 
+            font-family: 'Sacramento', cursive; backdrop-filter: blur(5px);
         }
 
         .btn-yes:hover { background: #fff; color: #ff69b4; transform: scale(1.1); }
-        .btn-no:hover { 
-            background: #ffb6c1; 
-            border-color: #ffb6c1; 
-            color: #fff; 
-            box-shadow: 0 0 20px #fff; 
-            transform: scale(1.1); 
-        }
+        .btn-no:hover { background: #ffb6c1; border-color: #ffb6c1; color: #fff; box-shadow: 0 0 20px #fff; transform: scale(1.1); }
 
         /* --- Store Section --- */
         .store { 
-            min-height: 100vh; 
-            padding: 80px 20px; 
-            background: #fff; 
+            min-height: 100vh; padding: 80px 20px; background: #fff; 
             background-image: radial-gradient(#ffe4e1 1px, transparent 1px);
-            background-size: 20px 20px; 
-            position: relative; /* Context for the star animation */
+            background-size: 20px 20px; position: relative;
         }
 
-        .store h2 { 
-            font-family: 'Sacramento', cursive; 
-            text-align: center; 
-            font-size: clamp(3rem, 8vw, 4.5rem); 
-            color: #ff69b4; 
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 2; /* Keep above the star */
-        }
+        .store h2 { font-family: 'Sacramento', cursive; text-align: center; font-size: 4.5rem; color: #ff69b4; margin-bottom: 40px; }
 
         .grid {
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; 
-            max-width: 1200px; 
-            margin: 0 auto;
-            position: relative;
-            z-index: 2; /* Keep above the star */
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; max-width: 1200px; margin: 0 auto;
         }
 
-        /* Shared Card Styles */
         .card {
-            background: #fff; 
-            padding: 30px; 
-            border: 2px dashed #ffb6c1;
-            text-align: center; 
-            border-radius: 25px;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
-            text-decoration: none;
+            background: #fff; padding: 30px; border: 2px dashed #ffb6c1;
+            text-align: center; border-radius: 25px; transition: 0.3s;
+            display: flex; flex-direction: column; justify-content: space-between;
+            cursor: pointer; text-decoration: none;
         }
 
-        /* Hover effect for all cards */
         .card:hover { border-style: solid; border-color: #ff69b4; background: #fffafb; transform: translateY(-5px); }
-        
-        /* Card Text Style */
-        .card h3 { font-family: 'Sacramento', cursive; font-size: 2.2rem; color: #ff69b4; margin-bottom: 10px; margin-top: 0; }
+        .card h3 { font-family: 'Sacramento', cursive; font-size: 2.2rem; color: #ff69b4; margin-bottom: 10px; }
         .card p { color: #888; font-size: 1.1rem; line-height: 1.4; margin-bottom: 20px; }
         .card .price-tag { color: #ffb6c1; font-weight: bold; font-size: 1.2rem; margin-top: auto; }
 
-        /* --- Shooting Star Animation CSS --- */
-        
-        /* Container for the effect, covers the whole page while visible */
-        #e-animation-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none; /* Let clicks pass through */
-            overflow: hidden;
-            display: none; /* Hidden by default */
-            z-index: 9999; /* Always on top */
+        /* --- BIG SMILEY SHOOTING STAR ANIMATION --- */
+        #star-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; display: none; z-index: 10000; overflow: hidden;
         }
 
-        /* The core shooting star element */
-        .shooting-star {
+        .big-star {
             position: absolute;
-            top: 50%;
-            left: -100px; /* Start off-screen on the left */
-            width: 150px;
-            height: 4px;
-            background: linear-gradient(90deg, #ff69b4, #fff); /* Pink to white trail */
-            border-radius: 999px;
-            filter: drop-shadow(0 0 10px #ff69b4);
-            animation: shoot-across 0.8s ease-out forwards; /* Define the animation */
-        }
-        
-        /* Head of the star (the bright spot) */
-        .shooting-star::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            width: 10px;
-            height: 10px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 15px 4px #fff;
+            top: 10%; left: -500px; /* Large start offset */
+            width: 400px; height: 400px;
+            background: #fff200; /* Bright yellow star */
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            display: flex; justify-content: center; align-items: center;
+            filter: drop-shadow(0 0 30px #ff69b4);
+            animation: zoom-star 1.2s ease-in-out forwards;
         }
 
-        /* The motion path animation */
-        @keyframes shoot-across {
-            0% {
-                transform: translateX(0) translateY(0) rotate(-15deg) scaleX(0);
-                opacity: 0;
-            }
-            15% {
-                opacity: 1;
-                scaleX(1);
-            }
-            100% {
-                /* Moves far right and down across the screen */
-                transform: translateX(calc(100vw + 200px)) translateY(calc(30vh)) rotate(-15deg) scaleX(1);
-                opacity: 0; /* Fade out at the end */
-            }
+        /* The Smiley Face */
+        .big-star::after {
+            content: '• ◡ •'; /* Cute face */
+            font-family: Arial, sans-serif;
+            font-size: 5rem; color: #ff69b4; font-weight: bold;
+            position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);
+        }
+
+        /* The Pink Rainbow Trail */
+        .star-trail {
+            position: absolute; top: 15%; left: -1000px;
+            width: 800px; height: 300px;
+            background: linear-gradient(90deg, transparent, #ffb6c1, #ff69b4);
+            border-radius: 50%; filter: blur(20px); opacity: 0.7;
+            animation: zoom-trail 1.2s ease-in-out forwards;
+        }
+
+        @keyframes zoom-star {
+            0% { transform: translate(0, 0) scale(0.5) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translate(150vw, 50vh) scale(2.5) rotate(45deg); opacity: 0; }
+        }
+
+        @keyframes zoom-trail {
+            0% { transform: translate(0, 0); opacity: 0; }
+            100% { transform: translate(150vw, 50vh); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div id="e-animation-container">
-        <div class="shooting-star"></div>
+    <div id="star-overlay">
+        <div class="star-trail"></div>
+        <div class="big-star"></div>
     </div>
 
     <section class="landing">
         <div class="sparkle" style="top: 10%; left: 15%;">✨</div>
         <div class="sparkle" style="top: 20%; right: 20%;">🌈</div>
-        <div class="sparkle" style="bottom: 25%; left: 10%;">💖</div>
-        <div class="sparkle" style="bottom: 15%; right: 15%;">🌸</div>
-
         <h1>Are we crashing out?</h1>
         <div class="btn-container">
             <button class="btn btn-yes" onclick="document.getElementById('store').scrollIntoView()">Yes ✨</button>
@@ -197,58 +139,46 @@
     <section id="store" class="store">
         <h2>What are we in the mood for?</h2>
         <div class="grid">
-            
             <a href="https://www.youtube.com/watch?v=AtPrjYp75uA&list=PLT-q13kr8SEb18xVKBXsDDS2ks0TbeUOl&index=2" class="card">
                 <h3>Bed Rotting</h3>
-                <p>Spend the next 14 hours in a nest of discarded Lays wrappers and Crumbl Cookie boxes until you forget what year it is.</p>
+                <p>Spend the next 14 hours in a nest of discarded Lays wrappers and Crumbl Cookie boxes.</p>
                 <div class="price-tag">Professional Level ☁️</div>
             </a>
 
             <a href="https://www.youtube.com/watch?v=3W1VFVy-C4s" class="card">
                 <h3>The 2:00 AM Hair "Trim"</h3>
-                <p>Grab the kitchen scissors. You don’t need a therapist, you need bangs. It’s a classic for a reason.</p>
+                <p>Grab the kitchen scissors. You don’t need a therapist, you need bangs.</p>
                 <div class="price-tag">Style: Chaotic ✂️</div>
             </a>
 
             <a href="https://www.youtube.com/watch?v=b5fmFM82ni8" class="card">
                 <h3>Competitive Window Shopping</h3>
-                <p>Add Rs8,000 worth of stuff to your cart just to feel something, then close the tab and stare at the wall.</p>
+                <p>Add Rs8,000 worth of stuff to your cart just to feel something.</p>
                 <div class="price-tag">Total: Rs 0.00 🛒</div>
             </a>
 
             <a href="https://www.youtube.com/shorts/kVulfyOfx1g" class="card">
                 <h3>Doom Scroll</h3>
-                <p>Refresh your feed until your thumb goes numb. Absorb 1,000 opinions you didn't ask for while your tea gets cold.</p>
+                <p>Refresh your feed until your thumb goes numb. Absorb 1,000 opinions.</p>
                 <div class="price-tag">Entry Fee: Your Sanity 📱</div>
             </a>
 
-            <div id="option-e-card" class="card" onclick="playOptionE()">
+            <div class="card" onclick="playBadass()">
                 <h3>Going to be a Badass</h3>
-                <p>Dry your tears, put on that lip gloss, and prepare to take over the world. The crash out is over; the comeback is here.</p>
+                <p>Dry your tears, put on that lip gloss, and prepare to take over the world.</p>
                 <div class="price-tag">Vibe: Unstoppable 💅</div>
             </div>
-
         </div>
     </section>
 
     <script>
-        function playOptionE() {
-            const animationContainer = document.getElementById('e-animation-container');
-            const targetUrl = "https://www.youtube.com/shorts/_6HzLIJPH2A";
-
-            // 1. Show the full-screen container that holds the star
-            animationContainer.style.display = 'block';
-
-            // 2. The CSS animation (.shooting-star class) plays automatically 
-            // once its parent becomes visible. It lasts 0.8s.
-
-            // 3. Set a timer to redirect the user *after* the animation is mostly done.
-            // (We use 900ms to give the 800ms animation a moment to fade out).
-            setTimeout(function() {
-                window.location.href = targetUrl;
-            }, 900);
+        function playBadass() {
+            const overlay = document.getElementById('star-overlay');
+            overlay.style.display = 'block';
+            setTimeout(() => {
+                window.location.href = "https://www.youtube.com/shorts/_6HzLIJPH2A";
+            }, 1100);
         }
     </script>
-
 </body>
 </html>
