@@ -61,7 +61,7 @@
             transform: scale(1.1); 
         }
 
-        /* The Store Section */
+        /* Store Section */
         .store { 
             min-height: 100vh; 
             padding: 80px 20px; 
@@ -97,12 +97,13 @@
             flex-direction: column;
             justify-content: space-between;
             cursor: pointer;
+            text-decoration: none; /* Removes link underline */
         }
 
         .card:hover { border-style: solid; border-color: #ff69b4; background: #fffafb; transform: translateY(-5px); }
         
         .card h3 { font-family: 'Sacramento', cursive; font-size: 2.2rem; color: #ff69b4; margin-bottom: 10px; margin-top: 0; }
-        .card p { color: #888; font-size: 1rem; line-height: 1.4; margin-bottom: 20px; }
+        .card p { color: #888; font-size: 1.1rem; line-height: 1.4; margin-bottom: 20px; }
         .card .price-tag { color: #ffb6c1; font-weight: bold; font-size: 1.2rem; margin-top: auto; }
     </style>
 </head>
@@ -125,35 +126,35 @@
         <h2>What are we in the mood for?</h2>
         <div class="grid">
             
-            <div class="card" onclick="location.href='https://www.youtube.com/watch?v=AtPrjYp75uA&list=PLT-q13kr8SEb18xVKBXsDDS2ks0TbeUOl&index=2'">
+            <a href="https://www.youtube.com/watch?v=AtPrjYp75uA&list=PLT-q13kr8SEb18xVKBXsDDS2ks0TbeUOl&index=2" class="card">
                 <h3>Bed Rotting</h3>
                 <p>Spend the next 14 hours in a nest of discarded Lays wrappers and Crumbl Cookie boxes until you forget what year it is.</p>
                 <div class="price-tag">Professional Level ☁️</div>
-            </div>
+            </a>
 
-            <div class="card" onclick="location.href='https://www.youtube.com/watch?v=3W1VFVy-C4s'">
+            <a href="https://www.youtube.com/watch?v=3W1VFVy-C4s" class="card">
                 <h3>The 2:00 AM Hair "Trim"</h3>
                 <p>Grab the kitchen scissors. You don’t need a therapist, you need bangs. It’s a classic for a reason.</p>
                 <div class="price-tag">Style: Chaotic ✂️</div>
-            </div>
+            </a>
 
-            <div class="card">
+            <a href="https://www.youtube.com/watch?v=b5fmFM82ni8" class="card">
                 <h3>Competitive Window Shopping</h3>
                 <p>Add Rs8,000 worth of stuff to your cart just to feel something, then close the tab and stare at the wall.</p>
                 <div class="price-tag">Total: Rs 0.00 🛒</div>
-            </div>
+            </a>
 
-            <div class="card">
+            <a href="https://www.youtube.com/shorts/kVulfyOfx1g" class="card">
                 <h3>Doom Scroll</h3>
                 <p>Refresh your feed until your thumb goes numb. Absorb 1,000 opinions you didn't ask for while your tea gets cold.</p>
                 <div class="price-tag">Entry Fee: Your Sanity 📱</div>
-            </div>
+            </a>
 
-            <div class="card">
+            <a href="https://www.youtube.com/shorts/_6HzLIJPH2A" class="card">
                 <h3>Going to be a Badass</h3>
                 <p>Dry your tears, put on that lip gloss, and prepare to take over the world. The crash out is over; the comeback is here.</p>
                 <div class="price-tag">Vibe: Unstoppable 💅</div>
-            </div>
+            </a>
 
         </div>
     </section>
