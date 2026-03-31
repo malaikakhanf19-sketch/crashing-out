@@ -12,9 +12,10 @@
             background-color: #fff0f5; 
             color: #555;
             scroll-behavior: smooth; overflow-x: hidden;
+            height: 100%; /* Important for full-screen star effect */
         }
 
-        /* Magical Rainbow Sparkle Background */
+        /* --- Landing Page Section --- */
         .landing {
             height: 100vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
@@ -22,7 +23,7 @@
             position: relative;
         }
 
-        /* Floating Sparkles/Emojis */
+        /* Floating Sparkles */
         .sparkle { position: absolute; font-size: 2.5rem; animation: float 3s infinite ease-in-out; pointer-events: none; }
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -61,13 +62,14 @@
             transform: scale(1.1); 
         }
 
-        /* Store Section */
+        /* --- Store Section --- */
         .store { 
             min-height: 100vh; 
             padding: 80px 20px; 
             background: #fff; 
             background-image: radial-gradient(#ffe4e1 1px, transparent 1px);
             background-size: 20px 20px; 
+            position: relative; /* Context for the star animation */
         }
 
         .store h2 { 
@@ -76,6 +78,8 @@
             font-size: clamp(3rem, 8vw, 4.5rem); 
             color: #ff69b4; 
             margin-bottom: 40px;
+            position: relative;
+            z-index: 2; /* Keep above the star */
         }
 
         .grid {
@@ -84,8 +88,11 @@
             gap: 30px; 
             max-width: 1200px; 
             margin: 0 auto;
+            position: relative;
+            z-index: 2; /* Keep above the star */
         }
 
+        /* Shared Card Styles */
         .card {
             background: #fff; 
             padding: 30px; 
@@ -97,17 +104,82 @@
             flex-direction: column;
             justify-content: space-between;
             cursor: pointer;
-            text-decoration: none; /* Removes link underline */
+            text-decoration: none;
         }
 
+        /* Hover effect for all cards */
         .card:hover { border-style: solid; border-color: #ff69b4; background: #fffafb; transform: translateY(-5px); }
         
+        /* Card Text Style */
         .card h3 { font-family: 'Sacramento', cursive; font-size: 2.2rem; color: #ff69b4; margin-bottom: 10px; margin-top: 0; }
         .card p { color: #888; font-size: 1.1rem; line-height: 1.4; margin-bottom: 20px; }
         .card .price-tag { color: #ffb6c1; font-weight: bold; font-size: 1.2rem; margin-top: auto; }
+
+        /* --- Shooting Star Animation CSS --- */
+        
+        /* Container for the effect, covers the whole page while visible */
+        #e-animation-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none; /* Let clicks pass through */
+            overflow: hidden;
+            display: none; /* Hidden by default */
+            z-index: 9999; /* Always on top */
+        }
+
+        /* The core shooting star element */
+        .shooting-star {
+            position: absolute;
+            top: 50%;
+            left: -100px; /* Start off-screen on the left */
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff69b4, #fff); /* Pink to white trail */
+            border-radius: 999px;
+            filter: drop-shadow(0 0 10px #ff69b4);
+            animation: shoot-across 0.8s ease-out forwards; /* Define the animation */
+        }
+        
+        /* Head of the star (the bright spot) */
+        .shooting-star::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px 4px #fff;
+        }
+
+        /* The motion path animation */
+        @keyframes shoot-across {
+            0% {
+                transform: translateX(0) translateY(0) rotate(-15deg) scaleX(0);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+                scaleX(1);
+            }
+            100% {
+                /* Moves far right and down across the screen */
+                transform: translateX(calc(100vw + 200px)) translateY(calc(30vh)) rotate(-15deg) scaleX(1);
+                opacity: 0; /* Fade out at the end */
+            }
+        }
     </style>
 </head>
 <body>
+
+    <div id="e-animation-container">
+        <div class="shooting-star"></div>
+    </div>
 
     <section class="landing">
         <div class="sparkle" style="top: 10%; left: 15%;">✨</div>
@@ -150,14 +222,33 @@
                 <div class="price-tag">Entry Fee: Your Sanity 📱</div>
             </a>
 
-            <a href="https://www.youtube.com/shorts/_6HzLIJPH2A" class="card">
+            <div id="option-e-card" class="card" onclick="playOptionE()">
                 <h3>Going to be a Badass</h3>
                 <p>Dry your tears, put on that lip gloss, and prepare to take over the world. The crash out is over; the comeback is here.</p>
                 <div class="price-tag">Vibe: Unstoppable 💅</div>
-            </a>
+            </div>
 
         </div>
     </section>
+
+    <script>
+        function playOptionE() {
+            const animationContainer = document.getElementById('e-animation-container');
+            const targetUrl = "https://www.youtube.com/shorts/_6HzLIJPH2A";
+
+            // 1. Show the full-screen container that holds the star
+            animationContainer.style.display = 'block';
+
+            // 2. The CSS animation (.shooting-star class) plays automatically 
+            // once its parent becomes visible. It lasts 0.8s.
+
+            // 3. Set a timer to redirect the user *after* the animation is mostly done.
+            // (We use 900ms to give the 800ms animation a moment to fade out).
+            setTimeout(function() {
+                window.location.href = targetUrl;
+            }, 900);
+        }
+    </script>
 
 </body>
 </html>
